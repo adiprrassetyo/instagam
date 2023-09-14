@@ -14,7 +14,7 @@ import (
 )
 
 // get all comments
-func (cc *CommentController) GetAll(c *gin.Context) {
+func (cc *CommentController) GetAllComments(c *gin.Context) {
 	idPhotos := c.Param("id_photos")
 	user := c.MustGet("currentUser").(domainUser.User)
 	comments, err := cc.CommentUseCase.GetAllComments(idPhotos, user.ID)

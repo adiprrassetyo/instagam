@@ -3,8 +3,8 @@ package main
 import (
 	"instagam/infrastructures/config"
 	database "instagam/infrastructures/databases"
+	routesCommentsV1 "instagam/modules/v1/comments/routes"
 	routesUsersV1 "instagam/modules/v1/users/routes"
-	routesCommentsV1 "mygram/modules/v1/comments/routes"
 	error "instagam/pkg/http-error"
 
 	"github.com/gin-contrib/cors"
@@ -20,7 +20,6 @@ func main() {
 
 	router = routesUsersV1.NewRouter(router, db)
 	router = routesCommentsV1.NewRouter(router, db)
-
 	router.NoRoute(error.NotFound())
 	router.NoMethod(error.NoMethod())
 
