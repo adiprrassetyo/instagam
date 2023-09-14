@@ -131,8 +131,8 @@ func (ctrl *UserController) Login(c *gin.Context) {
 }
 
 // get all social media
-func (uc *UserController) GetAllSocialMedia(c *gin.Context) {
-	media, err := uc.UserUseCase.AllSocialMedia()
+func (ctrl *UserController) GetAllSocialMedia(c *gin.Context) {
+	media, err := ctrl.UserUseCase.AllSocialMedia()
 	if err != nil {
 		log.Println(err)
 		resp := api.APIResponse("Get Social Media Failed", http.StatusInternalServerError, "error", nil)
@@ -150,10 +150,10 @@ func (uc *UserController) GetAllSocialMedia(c *gin.Context) {
 }
 
 // get by id social media
-func (uc *UserController) GetOneSocialMedia(c *gin.Context) {
+func (ctrl *UserController) GetOneSocialMedia(c *gin.Context) {
 	// get id from url
 	id := c.Param("id")
-	media, err := uc.UserUseCase.OneSocialMedia(id)
+	media, err := ctrl.UserUseCase.OneSocialMedia(id)
 	// if media not found
 	if err != nil {
 		log.Println(err)
@@ -172,7 +172,7 @@ func (uc *UserController) GetOneSocialMedia(c *gin.Context) {
 }
 
 // create social media
-func (uc *UserController) CreateSocialMedia(c *gin.Context) {
+func (ctrl *UserController) CreateSocialMedia(c *gin.Context) {
 	// check input users and validation
 	var input domain.InsertSocialMedia
 	if err := c.ShouldBindJSON(&input); err != nil {
@@ -197,7 +197,7 @@ func (uc *UserController) CreateSocialMedia(c *gin.Context) {
 	}
 	// check if user already have social media
 	currentUser := c.MustGet("currentUser").(domain.User)
-	err := uc.UserUseCase.CheckSocialMedia(currentUser.ID)
+	err := ctrl.UserUseCase.CheckSocialMedia(currentUser.ID)
 	if err != nil {
 		if error.IsSame(err, error.ErrSocialMediaAlreadyExist) {
 			errorMessage := api.SetError("User Already Have Social Media")
@@ -207,7 +207,7 @@ func (uc *UserController) CreateSocialMedia(c *gin.Context) {
 		}
 	}
 	// insert data to database
-	socialmedia, err := uc.UserUseCase.CreateSocialMedia(input, currentUser.ID)
+	socialmedia, err := ctrl.UserUseCase.CreateSocialMedia(input, currentUser.ID)
 	if err != nil {
 		log.Println(err)
 		resp := api.APIResponse("Create Social Media Failed", http.StatusInternalServerError, "error", nil)
@@ -219,7 +219,7 @@ func (uc *UserController) CreateSocialMedia(c *gin.Context) {
 }
 
 // update social media
-func (uc *UserController) UpdateSocialMedia(c *gin.Context) {
+func (ctrl *UserController) UpdateSocialMedia(c *gin.Context) {
 	// get id from url
 	id := c.Param("id")
 	var input domain.UpdateSocialMedia
@@ -253,7 +253,7 @@ func (uc *UserController) UpdateSocialMedia(c *gin.Context) {
 	}
 	// update data to database
 	currentUser := c.MustGet("currentUser").(domain.User)
-	socialmedia, err := uc.UserUseCase.UpdateSocialMedia(input, id, currentUser.ID)
+	socialmedia, err := ctrl.UserUseCase.UpdateSocialMedia(input, id, currentUser.ID)
 	// if media not found
 	if err != nil {
 		log.Println(err)
@@ -273,11 +273,11 @@ func (uc *UserController) UpdateSocialMedia(c *gin.Context) {
 }
 
 // delete social media
-func (uc *UserController) DeleteSocialMedia(c *gin.Context) {
+func (ctrl *UserController) DeleteSocialMedia(c *gin.Context) {
 	// get id from url
 	id := c.Param("id")
 	currentUser := c.MustGet("currentUser").(domain.User)
-	err := uc.UserUseCase.DeleteSocialMedia(id, currentUser.ID)
+	err := ctrl.UserUseCase.DeleteSocialMedia(id, currentUser.ID)
 	if err != nil {
 		log.Println(err)
 		if error.IsSame(err, error.ErrSocialMediaNotFound) {
