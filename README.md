@@ -1,4 +1,4 @@
-# Final Project - MyGram API
+# Instagam
 
 Instagam is a RestFull API Social Media project. This project is made using the Go programming language and using the Gin framework. In the implementation of programming and layout, it uses Clean Architecture
 
@@ -35,18 +35,18 @@ Start the server
 - The First Way
   To run directly the main.go file, you can use the following command::
   `bash
-    go run ./app/main.go
-    `
+  go run ./app/main.go
+  `
 - The Second Way
   To run using Makefile, you can use the command as follows::
   `bash
-    Make run
-    `
+  Make run
+  `
 - The Third Way
   To run using nodemon, you can use the command as follows::
   `bash
-    nodemon --exec go run ./app/main.go
-    `
+  nodemon --exec go run ./app/main.go
+  `
   Or you can use a Makefile that has provided the nodemon command:
 
       ```bash
