@@ -33,26 +33,29 @@ cp .env.example .env
 Start the server
 
 - The First Way
-  To run directly the main.go file, you can use the following command::
-  `bash
+  To run directly the main.go file, you can use the following command:
+  ```bash
   go run ./app/main.go
-  `
+  ```
 - The Second Way
-  To run using Makefile, you can use the command as follows::
-  `bash
+  To run using Makefile, you can use the command as follows:
+  ```bash
   Make run
-  `
+  ```
 - The Third Way
-  To run using nodemon, you can use the command as follows::
-  `bash
+  To run using nodemon, you can use the command as follows:
+
+  ```bash
   nodemon --exec go run ./app/main.go
-  `
+  ```
+
   Or you can use a Makefile that has provided the nodemon command:
 
-      ```bash
-      Make run-nodemon
-      ```
-      For complete details on how to run using Makefile can be seen in the Makefile file.
+  ```bash
+  Make run-nodemons
+  ```
+
+  For complete details on how to run using Makefile can be seen in the Makefile file.
 
 Check the Instagam API documentation
 
