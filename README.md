@@ -59,6 +59,4 @@ Start the server
 
 Check the Instagam API documentation
 
-```
 [https://documenter.getpostman.com/view/23538862/2s9YC5wX3x](https://documenter.getpostman.com/view/23538862/2s9YC5wX3x)
-```
