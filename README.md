@@ -2,7 +2,7 @@
 
 Instagam is a RestFull API Social Media project. This project is made using the Go programming language and using the Gin framework. In the implementation of programming and layout, it uses Clean Architecture
 
-struktur project seperti berikut:
+The project structure is as follows:
 | Layer | Directory |
 |----------------------|----------------|
 | Frameworks & Drivers | Infrastructures|
